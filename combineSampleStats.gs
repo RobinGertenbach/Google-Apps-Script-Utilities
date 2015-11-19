@@ -45,5 +45,5 @@ function combineVariances(xbar1, xbar2, var1, var2, n1, n2) {
           n1 * n2 * var1 +
           n1 * n2 * var2 +
           n1 * n2 * (xbar1 - xbar2) * (xbar1 - xbar2)) /
-          (n1 + n2 - 1) * (n1 + n2);
+          ((n1 + n2 - 1) * (n1 + n2));
 }
