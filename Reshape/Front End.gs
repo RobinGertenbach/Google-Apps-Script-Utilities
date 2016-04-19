@@ -2,12 +2,14 @@
  * Melts a wide table into a long Format.
  *
  * @param {A1:F8} Range  The range to be molten into a long format
- * @param {"Year", "Country"} IDs   Comma Separated list of the heads that are ID Columns
+ * @param {A1:C1} IDs   The range with the column headers
  * @return {Molten range}
  * @customfunction
  */
 function melt(Range, IDs) {
   Range = table(Range, 0);
+  if (typeof(IDs) !== "object" && IDs !== undefined) {IDs = [IDs];}
+  if (IDs !== undefined) {arguments = [Range].concat(IDs[0]);}
   Range = meltTable.apply(this, arguments);
   return untable(Range);
 }
@@ -45,6 +47,6 @@ function onInstall(e) {
 
 function launch() {
   SpreadsheetApp.getActiveSpreadsheet().toast(
-    "You can now start using Reshape by using the MELT and CAST functions", 
+    "You can now start using Reshape by using the MELT and CAST functions",
     "Reshape enabled");
 }
