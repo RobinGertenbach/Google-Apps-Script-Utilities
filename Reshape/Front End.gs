@@ -29,3 +29,22 @@ function cast(Range, MeasureColumn, ValueColumn, defaultValue) {
   Range = castTable(Range, MeasureColumn, ValueColumn, defaultValue)
   return untable(Range);
 }
+
+
+function onOpen(e) {
+  SpreadsheetApp.getUi().createAddonMenu()
+      .addItem('Activate', 'launch')
+      .addToUi();
+}
+
+
+function onInstall(e) {
+  onOpen(e);
+}
+
+
+function launch() {
+  SpreadsheetApp.getActiveSpreadsheet().toast(
+    "You can now start using Reshape by using the MELT and CAST functions", 
+    "Reshape enabled");
+}
